@@ -31,8 +31,7 @@ int main(int argc, char* argv[]) {
     
     string line;
     ifstream myfile (cNomImgLue);
-    if (myfile.is_open())
-    {
+    if (myfile.is_open()) {
         string h, w;
         getline(myfile, h);
         height = stoi(h);
