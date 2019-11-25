@@ -28,10 +28,13 @@ int main(int argc, char* argv[]) {
     
     ofstream result;
     result.open("result.txt");
-    
+    result << ImgIn.getHeight() << std::endl;
+    result << ImgIn.getWidth() << std::endl;
     for (int i = 0; i < ImgIn.getHeight(); ++i) {
         for (int j = 0; j < ImgIn.getWidth(); ++j) {
-            result << std::to_string(ImgIn[i][j]) << std::endl;
+            result << std::to_string(ImgIn[i * 3][j * 3 + 0]) << std::endl;
+            result << std::to_string(ImgIn[i * 3][j * 3 + 1]) << std::endl;
+            result << std::to_string(ImgIn[i * 3][j * 3 + 2]) << std::endl;
         }
     }
     
