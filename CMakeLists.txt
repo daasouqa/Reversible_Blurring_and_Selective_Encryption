@@ -3,4 +3,4 @@ project(Floutage_Reversible_Et_Chiffrement_Selectif)
 
 set(CMAKE_CXX_STANDARD 14)
 
-add_executable(Floutage_Reversible_Et_Chiffrement_Selectif Blur_From_Mask.cpp ImageToTxt.cpp TxtToImage.cpp)
+add_executable(Floutage_Reversible_Et_Chiffrement_Selectif Blur_From_Mask.cpp ImageToTxt.cpp TxtToImage.cpp PermutationEncoding.cpp PermutationDecoding.cpp)

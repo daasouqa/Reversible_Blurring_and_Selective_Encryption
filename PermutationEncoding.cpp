@@ -36,73 +36,42 @@ int main(int argc, char* argv[]) {
         }
     }
     
-    int tailleBlock = 4;
+    int tailleBlock = 8;
     
-    for (int i = tailleBlock; i < ImgIn.getHeight() - tailleBlock; i += tailleBlock) {
-        for (int j = tailleBlock; j < ImgIn.getWidth() - tailleBlock; j += tailleBlock) {
-    
+    for (int i = 0; i < ImgIn.getHeight() - tailleBlock; i += tailleBlock) {
+
+        for (int j = 0; j < ImgIn.getWidth() - tailleBlock; j += tailleBlock) {
+
             for (int k = 0; k < tailleBlock; ++k) {
                 for (int l = 0; l < tailleBlock; ++l) {
-                    ImgOut[(i + k) * 3][(j + k) * 3 + 0] = ImgIn[(i + tailleBlock - 1 - k)*3][(j + tailleBlock - 1 - l) * 3 + 0];
-                    ImgOut[(i + k) * 3][(j + k) * 3 + 1] = ImgIn[(i + tailleBlock - 1 - k)*3][(j + tailleBlock - 1 - l) * 3 + 1];
-                    ImgOut[(i + k) * 3][(j + k) * 3 + 2] = ImgIn[(i + tailleBlock - 1 - k)*3][(j + tailleBlock - 1 - l) * 3 + 2];
+                    ImgOut[(i + k) * 3][(j + l) * 3 + 0] = ImgIn[(i + tailleBlock - 1 - k)*3][(j + tailleBlock - 1 - l) * 3 + 0];
+                    ImgOut[(i + k) * 3][(j + l) * 3 + 1] = ImgIn[(i + tailleBlock - 1 - k)*3][(j + tailleBlock - 1 - l) * 3 + 1];
+                    ImgOut[(i + k) * 3][(j + l) * 3 + 2] = ImgIn[(i + tailleBlock - 1 - k)*3][(j + tailleBlock - 1 - l) * 3 + 2];
                 }
             }
-            
-            /*// i j
-            ImgOut[i * 3][j * 3 + 0] = ImgIn[(i + 2) * 3][(j + 2) * 3 + 0];
-            ImgOut[i * 3][j * 3 + 1] = ImgIn[(i + 2) * 3][(j + 2) * 3 + 1];
-            ImgOut[i * 3][j * 3 + 2] = ImgIn[(i + 2) * 3][(j + 2) * 3 + 2];
-            
-            // i j+1
-            ImgOut[i * 3][(j + 1) * 3 + 0] = ImgIn[(i + 2) * 3][(j + 1) * 3 + 0];
-            ImgOut[i * 3][(j + 1) * 3 + 1] = ImgIn[(i + 2) * 3][(j + 1) * 3 + 1];
-            ImgOut[i * 3][(j + 1) * 3 + 2] = ImgIn[(i + 2) * 3][(j + 1) * 3 + 2];
-            
-            // i j+2
-            ImgOut[i * 3][(j + 2) * 3 + 0] = ImgIn[(i + 2) * 3][j * 3 + 0];
-            ImgOut[i * 3][(j + 2) * 3 + 1] = ImgIn[(i + 2) * 3][j * 3 + 1];
-            ImgOut[i * 3][(j + 2) * 3 + 2] = ImgIn[(i + 2) * 3][j * 3 + 2];
-    
-            // i j+3
-            ImgOut[i * 3][(j + 3) * 3 + 0] = ImgIn[(i + 2) * 3][j * 3 + 0];
-            ImgOut[i * 3][(j + 3) * 3 + 1] = ImgIn[(i + 2) * 3][j * 3 + 1];
-            ImgOut[i * 3][(j + 3) * 3 + 2] = ImgIn[(i + 2) * 3][j * 3 + 2];
-            
-            // i+1 j
-            ImgOut[(i + 1) * 3][j * 3 + 0] = ImgIn[i * 3][(j + 2) * 3 + 0];
-            ImgOut[(i + 1) * 3][j * 3 + 1] = ImgIn[i * 3][(j + 2) * 3 + 1];
-            ImgOut[(i + 1) * 3][j * 3 + 2] = ImgIn[i * 3][(j + 2) * 3 + 2];
-            
-            // i+1 j+1
-            ImgOut[(i + 1) * 3][(j + 1) * 3 + 0] = ImgIn[i * 3][(j + 1) * 3 + 0];
-            ImgOut[(i + 1) * 3][(j + 1) * 3 + 1] = ImgIn[i * 3][(j + 1) * 3 + 1];
-            ImgOut[(i + 1) * 3][(j + 1) * 3 + 2] = ImgIn[i * 3][(j + 1) * 3 + 2];
-            
-            // i+1 j+2
-            ImgOut[(i + 1) * 3][(j + 2) * 3 + 0] = ImgIn[i * 3][j * 3 + 0];
-            ImgOut[(i + 1) * 3][(j + 2) * 3 + 1] = ImgIn[i * 3][j * 3 + 1];
-            ImgOut[(i + 1) * 3][(j + 2) * 3 + 2] = ImgIn[i * 3][j * 3 + 2];
-            
-            // i+2 j
-            ImgOut[(i + 2) * 3][j * 3 + 0] = ImgIn[(i + 1) * 3][(j + 2) * 3 + 0];
-            ImgOut[(i + 2) * 3][j * 3 + 1] = ImgIn[(i + 1) * 3][(j + 2) * 3 + 1];
-            ImgOut[(i + 2) * 3][j * 3 + 2] = ImgIn[(i + 1) * 3][(j + 2) * 3 + 2];
-            
-            // i+2 j+1
-            ImgOut[(i + 2) * 3][(j + 1) * 3 + 0] = ImgIn[(i + 1) * 3][(j + 1) * 3 + 0];
-            ImgOut[(i + 2) * 3][(j + 1) * 3 + 1] = ImgIn[(i + 1) * 3][(j + 1) * 3 + 1];
-            ImgOut[(i + 2) * 3][(j + 1) * 3 + 2] = ImgIn[(i + 1) * 3][(j + 1) * 3 + 2];
-            
-            // i+2 j+2
-            ImgOut[(i + 2) * 3][(j + 2) * 3 + 0] = ImgIn[(i + 1) * 3][j * 3 + 0];
-            ImgOut[(i + 2) * 3][(j + 2) * 3 + 1] = ImgIn[(i + 1) * 3][j * 3 + 1];
-            ImgOut[(i + 2) * 3][(j + 2) * 3 + 2] = ImgIn[(i + 1) * 3][j * 3 + 2];*/
-            
-            
         }
-        
     }
+    
+//    for (int i = tailleBlock; i < ImgIn.getHeight() - tailleBlock; i += tailleBlock) {
+//        for (int j = tailleBlock; j < ImgIn.getWidth() - tailleBlock; j += tailleBlock * 2) {
+//            for (int k = 0; k < tailleBlock; ++k) {
+//                for (int l = 0; l < tailleBlock; ++l) {
+//                    int xR = ImgOut[(i + k) * 3][(j + l) * 3 + 0];
+//                    int xG = ImgOut[(i + k) * 3][(j + l) * 3 + 1];
+//                    int xB = ImgOut[(i + k) * 3][(j + l) * 3 + 2];
+//
+//                    ImgOut[(i + k) * 3][(j + l) * 3 + 0] = ImgOut[(i + k) * 3][(j + l + tailleBlock) * 3 + 0];
+//                    ImgOut[(i + k) * 3][(j + l) * 3 + 1] = ImgOut[(i + k) * 3][(j + l + tailleBlock) * 3 + 1];
+//                    ImgOut[(i + k) * 3][(j + l) * 3 + 2] = ImgOut[(i + k) * 3][(j + l + tailleBlock) * 3 + 2];
+//
+//                    ImgOut[(i + k) * 3][(j + l + tailleBlock) * 3 + 0] = xR;
+//                    ImgOut[(i + k) * 3][(j + l + tailleBlock) * 3 + 1] = xG;
+//                    ImgOut[(i + k) * 3][(j + l + tailleBlock) * 3 + 2] = xB;
+//                }
+//            }
+//
+//        }
+//    }
     
     ImgOut.save(cNomImgEcrite);
     
