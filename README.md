@@ -1,4 +1,4 @@
-# Reversible_Blurring_and_Selective_Encryption
+# Reversible Blurring and Selective Encryption
 
 ## CONTEXT
 
